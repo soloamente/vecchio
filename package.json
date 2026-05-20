@@ -40,6 +40,7 @@
     "@biomejs/biome": "^2.2.0",
     "@types/node": "^22.13.14",
     "@vecchio/config": "workspace:*",
+    "agentation": "^3.0.2",
     "lefthook": "^2.0.13",
     "turbo": "^2.8.12",
     "typescript": "catalog:"

@@ -1,1 +1,101 @@
 @import "@vecchio/ui/globals.css";
+
+/* Map app-provided Next.js font variables into Tailwind's sans/mono stacks (Geist over package default). */
+@theme inline {
+	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/*
+ * DataWeb — Vision-inspired spatial glass tokens (cool neutrals, one blue accent).
+ * Mobbin-adjacent polish: generous radius, capsule controls, inset floating frames.
+ */
+:root {
+	--dw-bg: oklch(0.97 0.006 264);
+	--dw-surface: oklch(1 0 0 / 0.58);
+	--dw-accent: oklch(0.5 0.12 252);
+	--dw-accent-soft: oklch(0.94 0.028 248);
+	--dw-radius-shell: 2rem;
+	--dw-radius-panel: 1.75rem;
+	--dw-depth-a: 0 24px 56px -28px oklch(0.22 0.045 264 / 0.22);
+	--dw-depth-b: 0 10px 28px -16px oklch(0.22 0.035 264 / 0.14);
+	--dw-inner-lit: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.dark {
+	--dw-bg: oklch(0.145 0.022 264);
+	--dw-surface: oklch(0.24 0.022 264 / 0.52);
+	--dw-accent: oklch(0.7 0.085 252);
+	--dw-accent-soft: oklch(0.29 0.055 252);
+	--dw-depth-a: 0 28px 64px -26px oklch(0 0 0 / 0.52);
+	--dw-depth-b: 0 14px 36px -18px oklch(0 0 0 / 0.38);
+	--dw-inner-lit: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Ambient canvas: soft radial blooms + calm base (spatial UI depth without neon). */
+.dw-app-shell {
+	background:
+		radial-gradient(
+			125% 85% at 8% -15%,
+			oklch(0.92 0.045 235 / 0.42),
+			transparent 58%
+		),
+		radial-gradient(
+			95% 65% at 102% 8%,
+			oklch(0.93 0.035 215 / 0.32),
+			transparent 52%
+		),
+		radial-gradient(
+			70% 55% at 50% 108%,
+			oklch(0.9 0.03 250 / 0.18),
+			transparent 55%
+		),
+		var(--dw-bg);
+}
+
+.dark .dw-app-shell {
+	background:
+		radial-gradient(
+			125% 85% at 8% -15%,
+			oklch(0.32 0.08 255 / 0.38),
+			transparent 58%
+		),
+		radial-gradient(
+			95% 65% at 102% 8%,
+			oklch(0.28 0.06 230 / 0.28),
+			transparent 52%
+		),
+		radial-gradient(
+			70% 55% at 50% 108%,
+			oklch(0.22 0.05 264 / 0.22),
+			transparent 55%
+		),
+		var(--dw-bg);
+}
+
+/* Ultra-light grain masked to center — fixed layer only (no scroll repaint). */
+.dw-ambient-grain {
+	background-image: radial-gradient(oklch(0 0 0 / 0.045) 1px, transparent 1px);
+	background-size: 3px 3px;
+	opacity: 0.45;
+	mask-image: radial-gradient(
+		ellipse 92% 72% at 50% 38%,
+		black 18%,
+		transparent 72%
+	);
+}
+
+.dark .dw-ambient-grain {
+	background-image: radial-gradient(oklch(1 0 0 / 0.06) 1px, transparent 1px);
+	opacity: 0.35;
+}
+
+/* Document preview grain (preview pane only). */
+.dw-doc-grain {
+	background-image: radial-gradient(oklch(0 0 0 / 0.06) 1px, transparent 1px);
+	background-size: 4px 4px;
+}
+
+.dark .dw-doc-grain {
+	background-image: radial-gradient(oklch(1 0 0 / 0.08) 1px, transparent 1px);
+}
