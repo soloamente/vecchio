@@ -1,199 +1,232 @@
 "use client";
 
-import { Button } from "@vecchio/ui/components/button";
 import { cn } from "@vecchio/ui/lib/utils";
 import {
-	Archive,
-	Clock,
+	Bookmark,
+	ChevronDown,
+	ChevronLeft,
+	ChevronRight,
 	FolderOpen,
+	HelpCircle,
 	Home,
 	LogOut,
 	ScrollText,
-	Star,
+	Settings,
 	Users,
 } from "lucide-react";
 import Link from "next/link";
+import type { ComponentProps } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "sonner";
 
-const navMain = [
-	{
-		href: "/",
-		label: "Home",
-		icon: Home,
-		badge: undefined as string | undefined,
-	},
-	{
-		href: "/fascicoli",
-		label: "Fascicoli Notarili",
-		icon: FolderOpen,
-		badge: "7",
-	},
-	{ href: "/fascicoli#successioni", label: "Successioni", icon: Users, badge: "2" },
-	{
-		href: "/richiesta-fascicoli",
-		label: "Richiesta fascicoli",
-		icon: ScrollText,
-		badge: undefined,
-	},
+const navPrimary = [
+	{ href: "/", label: "Dashboard", icon: Home },
+	{ href: "/richiesta-fascicoli", label: "Richiesta fascicoli", icon: ScrollText },
 ] as const;
 
-const navDoc = [
-	{ href: "#", label: "Recenti", icon: Clock },
-	{ href: "#", label: "Preferiti", icon: Star },
-	{ href: "#", label: "Archivio storico", icon: Archive },
+/** Elenco documenti — pagine separate come nel portale legacy. */
+const navDocumenti = [
+	{ href: "/fascicoli", label: "Fascicoli Notarili", icon: FolderOpen },
+	{ href: "/successioni", label: "Successioni", icon: Users },
 ] as const;
 
+const navFooter = [
+	{ href: "#", label: "Impostazioni", icon: Settings },
+	{ href: "#", label: "Assistenza", icon: HelpCircle },
+] as const;
+
+function NavLink({
+	href,
+	label,
+	icon: Icon,
+	active,
+	collapsed,
+}: {
+	href: ComponentProps<typeof Link>["href"];
+	label: string;
+	icon: React.ComponentType<{ strokeWidth?: number; className?: string }>;
+	active: boolean;
+	collapsed: boolean;
+}) {
+	return (
+		<Link
+			href={href}
+			title={collapsed ? label : undefined}
+			className={cn(
+				"flex items-center gap-3 rounded-[var(--dsg-radius-control)] px-3 py-2.5 font-medium text-[14px] transition-colors duration-150",
+				active
+					? "bg-[var(--dsg-sidebar-active)] text-white"
+					: "text-[var(--dsg-sidebar-text)] hover:bg-[var(--dsg-sidebar-hover)]",
+				collapsed && "justify-center px-2",
+			)}
+		>
+			<Icon strokeWidth={1.75} className="size-[18px] shrink-0" />
+			{!collapsed ? <span>{label}</span> : null}
+		</Link>
+	);
+}
+
+/** Sidebar con sezioni Navigazione + Elenco documenti (fascicoli e successioni separati). */
 export function DataWebSidebar() {
 	const pathname = usePathname();
 	const router = useRouter();
+	const [collapsed, setCollapsed] = useState(false);
 
-	/** Demo-only: nessun backend auth; chiude la sessione UI e torna alla home DataWeb. */
 	const handleExitAccount = () => {
 		toast.success("Sessione chiusa (demo)");
 		router.push("/");
 	};
 
+	const isPrimaryActive = (href: string) => {
+		if (href === "/") return pathname === "/";
+		return pathname === href || pathname.startsWith(`${href}/`);
+	};
+
+	const isDocumentiActive = (href: string) => {
+		if (href === "/fascicoli") {
+			return (
+				pathname === "/fascicoli" || pathname.startsWith("/fascicoli/")
+			);
+		}
+		return pathname === "/successioni" || pathname.startsWith("/successioni/");
+	};
+
 	return (
-		<aside
-			className={cn(
-				"flex w-full shrink-0 flex-col px-4 py-4 backdrop-blur-2xl backdrop-saturate-150",
-				/* Mobile: slim strip; desktop: floating Vision panel — altezza minima così il blocco utente resta in basso. */
-				"border-white/45 border-b bg-[var(--dw-surface)] lg:w-[272px] dark:border-white/10",
-				"lg:min-h-[calc(100dvh-2.5rem)] lg:rounded-[var(--dw-radius-shell)] lg:border lg:shadow-[var(--dw-inner-lit),var(--dw-depth-a),var(--dw-depth-b)] lg:dark:border-white/12",
-			)}
-		>
-			{/* Brand lockup — volumetric orb (specular ring + inner highlight). */}
-			<div className="flex items-center gap-3 px-1">
-				<div className="relative grid size-[3.25rem] select-none place-items-center rounded-full bg-gradient-to-br from-sky-400/95 via-sky-600/88 to-zinc-700/92 font-semibold text-[11px] text-white tracking-tight shadow-[0_16px_44px_-22px_var(--dw-accent),var(--dw-inner-lit)] ring-1 ring-white/45">
-					DW
-					<span className="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_2px_6px_rgba(255,255,255,0.38)]" />
-				</div>
-				<div className="min-w-0 leading-tight">
-					<p className="truncate font-semibold text-sm text-zinc-950 tracking-tight dark:text-zinc-50">
-						DataWeb
-					</p>
-					<p className="truncate font-medium text-[11px] text-zinc-500 tracking-wide dark:text-zinc-400">
-						Portale atti notarili
-					</p>
-				</div>
-			</div>
-
-			<div className="mt-7 flex min-h-0 flex-1 flex-col space-y-7 overflow-x-auto lg:overflow-visible">
-				<div>
-					<p className="px-3 font-semibold text-[10px] text-zinc-500 uppercase tracking-[0.16em] dark:text-zinc-400">
-						Navigazione
-					</p>
-					<nav
-						className="mt-3 flex gap-2 lg:flex-col lg:gap-1.5"
-						aria-label="Navigazione principale"
-					>
-						{navMain.map((item) => {
-							const pathOnly = item.href.includes("#")
-								? item.href.slice(0, item.href.indexOf("#"))
-								: item.href;
-							const hasHash = item.href.includes("#");
-							const active =
-								pathOnly !== "#" &&
-								(pathOnly === "/"
-									? pathname === "/"
-									: hasHash
-										? pathname === pathOnly
-										: pathname === pathOnly ||
-											pathname.startsWith(`${pathOnly}/`));
-							const Icon = item.icon;
-							return (
-								<Link
-									key={item.label}
-									href={item.href}
-									className={cn(
-										"group flex min-w-[156px] items-center gap-2.5 px-3.5 py-2.5 font-medium text-sm transition-[transform,background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:min-w-0",
-										/* Capsule rows — Mobbin-style segmented nav clarity */
-										"rounded-full text-zinc-600 dark:text-zinc-300",
-										active
-											? "bg-white text-zinc-950 shadow-[var(--dw-inner-lit),0_18px_42px_-28px_oklch(0.22_0.04_264/0.38)] ring-1 ring-zinc-950/[0.06] dark:bg-white/12 dark:text-white dark:ring-white/14"
-											: "hover:bg-white/50 hover:text-zinc-900 active:scale-[0.99] dark:hover:bg-white/[0.07] dark:hover:text-white",
-									)}
-								>
-									<Icon
-										strokeWidth={1.5}
-										className={cn(
-											"size-[18px] shrink-0 transition-colors",
-											active
-												? "text-sky-700 dark:text-sky-300"
-												: "text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300",
-										)}
-									/>
-									<span className="min-w-0 flex-1 truncate">{item.label}</span>
-									{item.badge ? (
-										<span className="rounded-full bg-zinc-950/[0.06] px-2.5 py-0.5 font-semibold text-[11px] text-zinc-600 tabular-nums ring-1 ring-zinc-950/[0.04] dark:bg-white/10 dark:text-zinc-200 dark:ring-white/10">
-											{item.badge}
-										</span>
-									) : null}
-								</Link>
-							);
-						})}
-					</nav>
-				</div>
-
-				<div>
-					<p className="px-3 font-semibold text-[10px] text-zinc-500 uppercase tracking-[0.16em] dark:text-zinc-400">
-						Classi documentali
-					</p>
-					<nav
-						className="mt-3 flex gap-2 lg:flex-col lg:gap-1.5"
-						aria-label="Classi documentali"
-					>
-						{navDoc.map((item) => {
-							const Icon = item.icon;
-							return (
-								<Link
-									key={item.label}
-									href={item.href}
-									className="group flex min-w-[156px] items-center gap-2.5 rounded-full px-3.5 py-2.5 font-medium text-sm text-zinc-600 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white/50 hover:text-zinc-900 active:scale-[0.99] lg:min-w-0 dark:text-zinc-400 dark:hover:bg-white/[0.07] dark:hover:text-zinc-100"
-								>
-									<Icon
-										strokeWidth={1.5}
-										className="size-[18px] shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300"
-									/>
-									<span className="truncate">{item.label}</span>
-								</Link>
-							);
-						})}
-					</nav>
-				</div>
-			</div>
-
-			{/* Account + uscita: in basso nella colonna (desktop); stesso blocco anche su mobile sotto la nav. */}
-			<div className="mt-6 border-white/35 border-t pt-6 lg:mt-auto lg:border-transparent lg:pt-10 dark:border-white/10">
-				<div className="flex items-center gap-3 rounded-[var(--dw-radius-panel)] bg-white/45 p-3.5 shadow-[var(--dw-inner-lit)] ring-1 ring-zinc-950/[0.05] backdrop-blur-xl dark:bg-white/[0.06] dark:ring-white/10">
-					<div
-						className="grid size-11 shrink-0 select-none place-items-center rounded-full bg-gradient-to-br from-amber-400 to-orange-600 font-semibold text-white text-xs shadow-[0_14px_36px_-18px_rgba(234,88,12,0.55)] ring-1 ring-white/35"
+		<div className="relative flex h-dvh shrink-0">
+			<aside
+				className={cn(
+					"flex h-full flex-col bg-[var(--dsg-sidebar)] text-white transition-[width] duration-200 ease-out",
+					collapsed ? "w-[72px]" : "w-[240px]",
+				)}
+			>
+				<div
+					className={cn(
+						"flex items-center gap-3 border-white/10 border-b px-5 py-4",
+						collapsed && "justify-center px-2",
+					)}
+				>
+					<Bookmark
+						strokeWidth={1.75}
+						className="size-6 shrink-0 text-white"
 						aria-hidden
-					>
-						ND
-					</div>
-					<div className="min-w-0 flex-1 leading-tight">
-						<p className="truncate font-semibold text-sm text-zinc-950 dark:text-zinc-50">
-							Notaio Dimostrativo
+					/>
+					{!collapsed ? (
+						<p className="font-semibold text-[15px] tracking-tight">
+							DSG | Portale
 						</p>
-						<p className="truncate text-[11px] text-zinc-500 dark:text-zinc-400">
-							Studio Demo — Padova
-						</p>
-					</div>
-					<Button
-						type="button"
-						variant="outline"
-						size="icon"
-						aria-label="Esci dall'account"
-						title="Esci dall'account"
-						onClick={handleExitAccount}
-						className="size-11 shrink-0 rounded-full shadow-[var(--dw-inner-lit)] ring-1 ring-zinc-950/[0.06] dark:ring-white/10"
-					>
-						<LogOut strokeWidth={1.5} className="size-[18px]" />
-					</Button>
+					) : null}
 				</div>
-			</div>
-		</aside>
+
+				<div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-3 py-4">
+					{!collapsed ? (
+						<p className="px-3 pb-2 font-medium text-[11px] text-[var(--dsg-sidebar-muted)] uppercase tracking-[0.1em]">
+							Navigazione
+						</p>
+					) : null}
+					<nav className="flex flex-col gap-1" aria-label="Navigazione">
+						{navPrimary.map((item) => (
+							<NavLink
+								key={item.label}
+								{...item}
+								active={isPrimaryActive(item.href)}
+								collapsed={collapsed}
+							/>
+						))}
+					</nav>
+
+					{!collapsed ? (
+						<p className="mt-6 px-3 pb-2 font-medium text-[11px] text-[var(--dsg-sidebar-muted)] uppercase tracking-[0.1em]">
+							Elenco documenti
+						</p>
+					) : (
+						<div className="mt-4 border-white/10 border-t" aria-hidden />
+					)}
+					<nav className="flex flex-col gap-1" aria-label="Elenco documenti">
+						{navDocumenti.map((item) => (
+							<NavLink
+								key={item.label}
+								{...item}
+								active={isDocumentiActive(item.href)}
+								collapsed={collapsed}
+							/>
+						))}
+					</nav>
+				</div>
+
+				<div className="mt-auto flex shrink-0 flex-col gap-1 border-white/10 border-t px-3 py-4">
+					{navFooter.map((item) => (
+						<NavLink
+							key={item.label}
+							{...item}
+							active={false}
+							collapsed={collapsed}
+						/>
+					))}
+
+					<div
+						className={cn(
+							"border-white/10 border-t pt-3",
+							collapsed && "flex justify-center",
+						)}
+					>
+						<button
+							type="button"
+							className={cn(
+								"flex w-full items-center gap-2.5 rounded-[var(--dsg-radius-control)] px-2 py-2 text-left transition-colors hover:bg-[var(--dsg-sidebar-hover)]",
+								collapsed && "justify-center px-0",
+							)}
+							aria-haspopup="menu"
+							aria-expanded={false}
+						>
+							<span
+								className="grid size-9 shrink-0 place-items-center rounded-full bg-white/20 font-semibold text-white text-xs ring-1 ring-white/25"
+								aria-hidden
+							>
+								ND
+							</span>
+							{!collapsed ? (
+								<>
+									<span className="min-w-0 flex-1 truncate font-medium text-[14px]">
+										Notaio Dimostrativo
+									</span>
+									<ChevronDown
+										strokeWidth={1.75}
+										className="size-4 shrink-0 text-[var(--dsg-sidebar-muted)]"
+										aria-hidden
+									/>
+								</>
+							) : null}
+						</button>
+					</div>
+
+					<button
+						type="button"
+						onClick={handleExitAccount}
+						title={collapsed ? "Logout" : undefined}
+						className={cn(
+							"flex w-full items-center gap-3 rounded-[var(--dsg-radius-control)] px-3 py-2.5 font-medium text-[14px] text-[#f87171] transition-colors hover:bg-[var(--dsg-sidebar-hover)]",
+							collapsed && "justify-center px-2",
+						)}
+					>
+						<LogOut strokeWidth={1.75} className="size-[18px] shrink-0" />
+						{!collapsed ? <span>Logout</span> : null}
+					</button>
+				</div>
+			</aside>
+
+			<button
+				type="button"
+				onClick={() => setCollapsed((prev) => !prev)}
+				aria-label={collapsed ? "Espandi menu" : "Comprimi menu"}
+				className="absolute top-[4.5rem] -right-3 z-20 grid size-7 place-items-center rounded-full border border-[var(--dsg-border)] bg-white text-[var(--dsg-text-muted)] shadow-sm transition-transform hover:text-[var(--dsg-text)]"
+			>
+				{collapsed ? (
+					<ChevronRight strokeWidth={2} className="size-4" />
+				) : (
+					<ChevronLeft strokeWidth={2} className="size-4" />
+				)}
+			</button>
+		</div>
 	);
 }

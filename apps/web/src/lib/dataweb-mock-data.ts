@@ -1,4 +1,4 @@
-/** Static Italian mock dataset for DataWeb dashboard screens (not wired to backend). */
+/** Static Italian mock dataset for DSG Portale screens (not wired to backend). */
 
 export interface DwRecentFascicolo {
 	id: string;
@@ -36,6 +36,182 @@ export interface DwPaginaIndice {
 	label: string;
 	allegato?: boolean;
 }
+
+/** KPI tile on the dashboard home. */
+export interface DwDashboardKpi {
+	label: string;
+	value: string;
+	sublabel: string;
+	trend: string;
+	trendDirection: "up" | "down";
+	trendTone: "green" | "orange";
+	iconTone: "blue" | "green" | "orange" | "purple";
+}
+
+/** Monthly access bar chart (Gen–Dic). */
+export interface DwChartBar {
+	label: string;
+	value: number;
+}
+
+export type DwAttivitaIcon = "success" | "folder" | "pending";
+
+export interface DwAttivitaRecente {
+	id: string;
+	titolo: string;
+	sottotitolo: string;
+	quando: string;
+	icon: DwAttivitaIcon;
+}
+
+export type DwRichiestaStatoBadge = "in-elaborazione" | "in-attesa";
+
+export interface DwRichiestaInCorso {
+	id: string;
+	descrizione: string;
+	data: string;
+	stato: DwRichiestaStatoBadge;
+}
+
+export const dwDashboardKpis: DwDashboardKpi[] = [
+	{
+		label: "Fascicoli consultati",
+		value: "38",
+		sublabel: "Ultimo anno",
+		trend: "12%",
+		trendDirection: "up",
+		trendTone: "green",
+		iconTone: "blue",
+	},
+	{
+		label: "Richieste inviate",
+		value: "12",
+		sublabel: "In attesa di risposta",
+		trend: "8%",
+		trendDirection: "up",
+		trendTone: "green",
+		iconTone: "green",
+	},
+	{
+		label: "Da revisionare",
+		value: "4",
+		sublabel: "Richieste",
+		trend: "2%",
+		trendDirection: "down",
+		trendTone: "orange",
+		iconTone: "orange",
+	},
+	{
+		label: "Tasso di evasione",
+		value: "97%",
+		sublabel: "Ultimi 12 mesi",
+		trend: "5%",
+		trendDirection: "up",
+		trendTone: "green",
+		iconTone: "purple",
+	},
+];
+
+/** Accessi effettuati — ultimo anno (values 0–50 scale in the mock). */
+export const dwAccessiMensili: DwChartBar[] = [
+	{ label: "Gen", value: 18 },
+	{ label: "Feb", value: 22 },
+	{ label: "Mar", value: 28 },
+	{ label: "Apr", value: 24 },
+	{ label: "Mag", value: 32 },
+	{ label: "Giu", value: 30 },
+	{ label: "Lug", value: 26 },
+	{ label: "Ago", value: 20 },
+	{ label: "Set", value: 34 },
+	{ label: "Ott", value: 38 },
+	{ label: "Nov", value: 42 },
+	{ label: "Dic", value: 36 },
+];
+
+/** Riepilogo ultimi 10 anni (2015–2024). */
+export const dwRiepilogoAnnuale: DwChartBar[] = [
+	{ label: "2015", value: 180 },
+	{ label: "2016", value: 210 },
+	{ label: "2017", value: 240 },
+	{ label: "2018", value: 265 },
+	{ label: "2019", value: 290 },
+	{ label: "2020", value: 255 },
+	{ label: "2021", value: 310 },
+	{ label: "2022", value: 335 },
+	{ label: "2023", value: 360 },
+	{ label: "2024", value: 385 },
+];
+
+export const dwAttivitaRecenti: DwAttivitaRecente[] = [
+	{
+		id: "a1",
+		titolo: "Richiesta #4729 inviata",
+		sottotitolo: "Rep. 5212/4899 — Copia conforme",
+		quando: "Oggi, 10:24",
+		icon: "success",
+	},
+	{
+		id: "a2",
+		titolo: "Fascicolo Rep. 5212/4899 consultato",
+		sottotitolo: "Consultazione fascicolo",
+		quando: "Oggi, 09:15",
+		icon: "folder",
+	},
+	{
+		id: "a3",
+		titolo: "Richiesta #4718 evasa",
+		sottotitolo: "Rep. 6104 — Estratto cronologico",
+		quando: "Ieri, 16:42",
+		icon: "success",
+	},
+	{
+		id: "a4",
+		titolo: "Nuovo fascicolo disponibile Rep. 5340",
+		sottotitolo: "Atto pubblico — Studio Marchetti",
+		quando: "Ieri, 11:30",
+		icon: "folder",
+	},
+	{
+		id: "a5",
+		titolo: "Richiesta #4712 in attesa",
+		sottotitolo: "Rep. 4761 — Certificazione ipotecaria",
+		quando: "12/05/2024",
+		icon: "pending",
+	},
+];
+
+export const dwRichiesteInCorso: DwRichiestaInCorso[] = [
+	{
+		id: "#4729",
+		descrizione: "Copia conforme atto Rep. 5212/4899",
+		data: "14/05/2024",
+		stato: "in-elaborazione",
+	},
+	{
+		id: "#4718",
+		descrizione: "Estratto cronologico fascicolo Rep. 6104",
+		data: "12/05/2024",
+		stato: "in-elaborazione",
+	},
+	{
+		id: "#4712",
+		descrizione: "Certificazione ipotecaria Rep. 4761",
+		data: "10/05/2024",
+		stato: "in-attesa",
+	},
+	{
+		id: "#4705",
+		descrizione: "Richiesta allegati integrativi Rep. 4498",
+		data: "08/05/2024",
+		stato: "in-attesa",
+	},
+	{
+		id: "#4698",
+		descrizione: "Consultazione fascicolo Rep. 4102",
+		data: "05/05/2024",
+		stato: "in-elaborazione",
+	},
+];
 
 export const dwRecentFascicoli: DwRecentFascicolo[] = [
 	{
@@ -107,6 +283,36 @@ export const dwRichiesteRecenti: DwRichiesta[] = [
 	},
 ];
 
+/** Successioni — separate dataset (own route `/successioni`). */
+export interface DwSuccessioneRow {
+	id: string;
+	dataAtto: string;
+	parti: string;
+}
+
+export const dwSuccessioniRows: DwSuccessioneRow[] = [
+	{
+		id: "succ-ferrari-2010",
+		dataAtto: "25/10/2010",
+		parti: "Ferrari Matteo — Ferrari Angelica",
+	},
+	{
+		id: "5212",
+		dataAtto: "08/03/2024",
+		parti: "De Santis Maria — Curatore Fallimento Brentella",
+	},
+	{
+		id: "succ-orsolini-2019",
+		dataAtto: "14/06/2019",
+		parti: "Famiglia Orsolini — Notaio Dimostrativo",
+	},
+	{
+		id: "succ-brentella-2022",
+		dataAtto: "03/11/2022",
+		parti: "Consorzio Brentella Due — Eredi Moschin",
+	},
+];
+
 export const dwTableRows: DwFascicoloRow[] = [
 	{
 		repertorio: "5340",
@@ -156,6 +362,27 @@ export const dwTableRows: DwFascicoloRow[] = [
 		tipologia: "Affido fiduciario",
 		stato: "archiviato",
 	},
+];
+
+/** Fascicoli notarili — dataset per `/fascicoli` (senza pratiche successione). */
+export const dwFascicoliNotariliRows: DwFascicoloRow[] = [
+	{
+		repertorio: "1562",
+		raccolta: "1100",
+		dataAtto: "28/02/2019",
+		parti: "L. Colmayer — Bernabé",
+		tipologia: "Compravendita immobiliare",
+		stato: "archiviato",
+	},
+	{
+		repertorio: "11657",
+		raccolta: "4326",
+		dataAtto: "04/01/2011",
+		parti: "Cervetto Lidia",
+		tipologia: "Atto notarile",
+		stato: "archiviato",
+	},
+	...dwTableRows.filter((row) => row.tipologia !== "Successione"),
 ];
 
 export const dwCronologia: DwCronologiaVoce[] = [

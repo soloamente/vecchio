@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "DataWeb — Portale atti notarili",
+	title: "DSG | Portale",
 	description:
-		"Demo UI per consultazione fascicoli, ricerca avanzata e anteprima documentale (mock dati).",
+		"Portale notarile per consultazione fascicoli, richieste e statistiche di attività (demo).",
 };
 
 export default function RootLayout({
@@ -27,9 +27,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="it" suppressHydrationWarning>
+		<html lang="it" className="light" style={{ colorScheme: "light" }} suppressHydrationWarning>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased [font-feature-settings:'tnum'_on,'lnum'_on]`}
+				className={`${geistSans.variable} ${geistMono.variable} bg-[var(--dsg-canvas)] text-[var(--dsg-text)] antialiased [font-feature-settings:'tnum'_on,'lnum'_on]`}
 			>
 				<Providers>
 					<div className="min-h-dvh">{children}</div>

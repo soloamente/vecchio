@@ -4,7 +4,7 @@ import { cn } from "@vecchio/ui/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
 
-/** Class tabs inside the shell (hash sync e.g. `#successioni`). “Filtri” is separate UI on the page. */
+/** Class tabs inside the shell (hash sync e.g. `#successioni`). */
 export type FascicoliClassTab = "tutti" | "notarili" | "successioni";
 
 const TAB_ORDER = [
@@ -21,14 +21,12 @@ function tabFromHash(hash: string): FascicoliClassTab {
 	if (key === "successioni") {
 		return "successioni";
 	}
-	/* `#filtri` / unknown hashes: keep class segment on Tutti (Filtri is not a tab). */
 	return "tutti";
 }
 
 function replaceUrlHash(tab: FascicoliClassTab) {
 	const { pathname, search } = window.location;
 	const base = `${pathname}${search}`;
-	// Tutti: strip hash so the URL stays clean; other tabs use `#segment`.
 	if (tab === "tutti") {
 		window.history.replaceState(null, "", base);
 	} else {
@@ -44,10 +42,7 @@ interface ChipRect {
 }
 
 /**
- * Capsule “shell” segmented control with an animated sliding chip (matches the
- * reference: dark track, lighter pill behind the active segment).
- * On `/fascicoli`, selection syncs with `location.hash`. On other routes, clicks
- * navigate to `/fascicoli` with the same hash contract.
+ * Light segmented filter — same visual language as dashboard chart tabs / portale controls.
  */
 export function FascicoliClassSegmented() {
 	const router = useRouter();
@@ -71,7 +66,6 @@ export function FascicoliClassSegmented() {
 		setSelected(tabFromHash(window.location.hash));
 	}, []);
 
-	// List route only: hydrate from hash and follow browser navigation.
 	React.useEffect(() => {
 		if (!isFascicoliList) {
 			return;
@@ -123,7 +117,6 @@ export function FascicoliClassSegmented() {
 		setSelected(tab);
 		if (isFascicoliList) {
 			replaceUrlHash(tab);
-			// replaceState does not emit `hashchange`; remeasure on the next frame.
 			requestAnimationFrame(measureChip);
 		} else {
 			router.push(tab === "tutti" ? "/fascicoli" : `/fascicoli#${tab}`);
@@ -134,21 +127,13 @@ export function FascicoliClassSegmented() {
 	return (
 		<fieldset
 			ref={shellRef}
-			className={cn(
-				"relative m-0 inline-flex min-w-0 items-center gap-0.5 rounded-full border-0 p-1",
-				/* Shell: dark matte track (light mode uses a softer zinc rail). */
-				"bg-zinc-800/95 ring-1 ring-zinc-950/20 ring-inset",
-				"dark:bg-zinc-950/90 dark:ring-white/10",
-			)}
+			className="relative m-0 inline-flex min-w-0 items-center gap-0.5 rounded-[var(--dsg-radius-control)] border border-[var(--dsg-border)] bg-[#eef1f5] p-1"
 		>
 			<legend className="sr-only">Filtra fascicoli per classe</legend>
-			{/* Sliding chip: sits under labels; position/size come from button metrics. */}
 			<span
 				aria-hidden
 				className={cn(
-					"pointer-events-none absolute rounded-full",
-					"bg-white/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] ring-1 ring-zinc-950/8",
-					"dark:bg-zinc-600/95 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] dark:ring-white/12",
+					"pointer-events-none absolute rounded-[8px] bg-white shadow-[var(--dsg-shadow-card)] ring-1 ring-[var(--dsg-border)]",
 					"transition-[left,top,width,height] duration-200 ease-out motion-reduce:transition-none",
 					chip.width === 0 && "opacity-0",
 				)}
@@ -159,7 +144,6 @@ export function FascicoliClassSegmented() {
 					height: chip.height,
 				}}
 			/>
-
 			{TAB_ORDER.map((id) => {
 				const isOn = selected === id;
 				const label =
@@ -183,11 +167,11 @@ export function FascicoliClassSegmented() {
 						aria-pressed={isOn}
 						onClick={() => handleSelect(id)}
 						className={cn(
-							"relative z-10 flex h-9 shrink-0 cursor-pointer select-none items-center justify-center rounded-full px-4 font-medium text-sm",
-							"outline-none focus-visible:ring-2 focus-visible:ring-sky-500/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 dark:focus-visible:ring-offset-zinc-950",
+							"relative z-10 flex h-9 shrink-0 cursor-pointer select-none items-center justify-center rounded-[8px] px-4 font-medium text-[14px] outline-none",
+							"focus-visible:ring-2 focus-visible:ring-[var(--dsg-primary)]/30 focus-visible:ring-offset-2",
 							isOn
-								? "text-zinc-950 dark:text-zinc-50"
-								: "text-zinc-300 hover:text-white dark:text-zinc-400 dark:hover:text-zinc-100",
+								? "text-[var(--dsg-text)]"
+								: "text-[var(--dsg-text-muted)] hover:text-[var(--dsg-text)]",
 						)}
 					>
 						{label}

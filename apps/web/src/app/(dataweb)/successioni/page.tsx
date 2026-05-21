@@ -2,8 +2,8 @@ import { Button } from "@vecchio/ui/components/button";
 import { Input } from "@vecchio/ui/components/input";
 import { Label } from "@vecchio/ui/components/label";
 import { List } from "lucide-react";
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DsgMostraButton } from "@/components/dataweb/dsg-mostra-button";
 import {
 	DsgCard,
@@ -17,78 +17,52 @@ import {
 	dsgPageMain,
 	dsgTableHead,
 } from "@/components/dataweb/dsg-ui";
-import { dwFascicoliNotariliRows } from "@/lib/dataweb-mock-data";
+import { dwSuccessioniRows } from "@/lib/dataweb-mock-data";
 
 export const metadata: Metadata = {
-	title: "Fascicoli Notarili | DSG Portale",
-	description: "Ricerca e consultazione fascicoli notarili.",
+	title: "Successioni | DSG Portale",
+	description: "Ricerca e consultazione fascicoli di successione.",
 };
 
-/** Pagina dedicata ai fascicoli notarili (separata da Successioni). */
-export default function FascicoliPage() {
+/** Pagina dedicata alle successioni (separata da Fascicoli Notarili). */
+export default function SuccessioniPage() {
 	return (
 		<main className={dsgPageMain}>
 			<div className="space-y-1">
 				<p className={dsgEyebrow}>Elenco documenti</p>
-				<h1 className={dsgH1}>Fascicoli Notarili</h1>
+				<h1 className={dsgH1}>Successioni</h1>
 				<p className={dsgLead}>
-					Cerca per repertorio, raccolta, data atto e anagrafica parti.
+					Ricerca per data atto e anagrafica parti delle pratiche successorie.
 				</p>
 			</div>
 
-			<DsgCard id="dw-fascicoli-search" className="mt-8 scroll-mt-28">
+			<DsgCard id="dw-successioni-search" className="mt-8 scroll-mt-28">
 				<DsgPanelHeader
 					title="Ricerca documento"
-					description="Compila i campi per filtrare l'elenco fascicoli."
+					description="Filtra le pratiche di successione dello studio."
 				/>
 				<form
-					className="grid gap-4 px-5 py-5 md:grid-cols-2 xl:grid-cols-4"
+					className="grid gap-4 px-5 py-5 md:grid-cols-2"
 					action="#"
 					method="get"
 				>
 					<div className="grid gap-2">
-						<Label htmlFor="rep" className={dsgLabel}>
-							Numero repertorio
-						</Label>
-						<Input
-							id="rep"
-							name="rep"
-							placeholder="es. 1562"
-							autoComplete="off"
-							spellCheck={false}
-							className={dsgInput}
-						/>
-					</div>
-					<div className="grid gap-2">
-						<Label htmlFor="rac" className={dsgLabel}>
-							Numero raccolta
-						</Label>
-						<Input
-							id="rac"
-							name="rac"
-							placeholder="es. 1100"
-							autoComplete="off"
-							spellCheck={false}
-							className={dsgInput}
-						/>
-					</div>
-					<div className="grid gap-2">
-						<Label htmlFor="data-atto" className={dsgLabel}>
+						<Label htmlFor="data-atto-succ" className={dsgLabel}>
 							Data atto
 						</Label>
 						<Input
-							id="data-atto"
+							id="data-atto-succ"
 							name="data-atto"
 							type="date"
 							className={dsgInput}
 						/>
 					</div>
 					<div className="grid gap-2">
-						<Label htmlFor="parti" className={dsgLabel}>
+						<Label htmlFor="parti-succ" className={dsgLabel}>
 							Anagrafica parti
 						</Label>
 						<Input
-							id="parti"
+							id="parti-succ"
 							name="parti"
 							placeholder="Cognome o denominazione"
 							autoComplete="off"
@@ -96,7 +70,7 @@ export default function FascicoliPage() {
 							className={dsgInput}
 						/>
 					</div>
-					<div className="flex items-end justify-end md:col-span-2 xl:col-span-4">
+					<div className="flex items-end justify-end md:col-span-2">
 						<Button type="submit" className={dsgBtnPrimary}>
 							Cerca
 						</Button>
@@ -107,40 +81,32 @@ export default function FascicoliPage() {
 			<DsgCard className="mt-6 overflow-hidden">
 				<DsgPanelHeader
 					title="Risultati ricerca"
-					description={`${dwFascicoliNotariliRows.length} fascicoli trovati (demo).`}
+					description={`${dwSuccessioniRows.length} pratiche trovate (demo).`}
 					icon={<List strokeWidth={1.75} className="size-4" />}
 				/>
 				<div className="overflow-x-auto">
-					<table className="w-full min-w-[880px] border-collapse text-left text-sm">
+					<table className="w-full min-w-[640px] border-collapse text-left text-sm">
 						<thead className={dsgTableHead}>
 							<tr className="[&_th]:border-[var(--dsg-border)] [&_th]:border-b">
-								<th className="px-5 py-4">Numero repertorio</th>
-								<th className="px-5 py-4">Numero raccolta</th>
 								<th className="px-5 py-4">Data atto</th>
 								<th className="px-5 py-4">Anagrafica parti</th>
 								<th className="px-5 py-4">Sottofascicoli</th>
 							</tr>
 						</thead>
 						<tbody className="[&_td]:border-[var(--dsg-border)] [&_td]:border-b">
-							{dwFascicoliNotariliRows.map((row) => (
+							{dwSuccessioniRows.map((row) => (
 								<tr
-									key={`${row.repertorio}-${row.raccolta}`}
+									key={row.id}
 									className="transition-colors hover:bg-[#f9fafb]"
 								>
-									<td className="px-5 py-4 font-mono font-semibold tabular-nums">
-										{row.repertorio}
-									</td>
-									<td className="px-5 py-4 font-mono font-semibold tabular-nums">
-										{row.raccolta}
-									</td>
 									<td className="px-5 py-4 text-[var(--dsg-text-muted)] tabular-nums">
 										{row.dataAtto}
 									</td>
-									<td className="max-w-[360px] px-5 py-4 font-medium text-[var(--dsg-text)]">
+									<td className="max-w-[480px] px-5 py-4 font-medium text-[var(--dsg-text)]">
 										{row.parti}
 									</td>
 									<td className="px-5 py-4">
-										<DsgMostraButton href={`/fascicoli/${row.repertorio}`} />
+										<DsgMostraButton href={`/successioni/${row.id}`} />
 									</td>
 								</tr>
 							))}
@@ -150,14 +116,14 @@ export default function FascicoliPage() {
 			</DsgCard>
 
 			<p className="mt-8 text-[12px] text-[var(--dsg-text-muted)]">
-				Le pratiche di{" "}
+				Per gli atti notarili generici apri{" "}
 				<Link
-					href="/successioni"
+					href="/fascicoli"
 					className="font-medium text-[var(--dsg-primary)] hover:underline"
 				>
-					successione
-				</Link>{" "}
-				si consultano nella sezione dedicata.
+					Fascicoli Notarili
+				</Link>
+				.
 			</p>
 		</main>
 	);
