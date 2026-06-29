@@ -6,29 +6,37 @@ import {
 	ChevronDown,
 	ChevronLeft,
 	ChevronRight,
-	FolderOpen,
 	HelpCircle,
-	Home,
 	LogOut,
-	ScrollText,
 	Settings,
-	Users,
 } from "lucide-react";
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import {
+	DsgNavIconDashboard,
+	DsgNavIconFascicoli,
+	DsgNavIconListino,
+	DsgNavIconRichiestaFascicoli,
+	DsgNavIconSuccessioni,
+} from "@/components/dataweb/dsg-sidebar-icons";
 
 const navPrimary = [
-	{ href: "/", label: "Dashboard", icon: Home },
-	{ href: "/richiesta-fascicoli", label: "Richiesta fascicoli", icon: ScrollText },
+	{ href: "/", label: "Dashboard", icon: DsgNavIconDashboard },
+	{
+		href: "/richiesta-fascicoli",
+		label: "Richiesta fascicoli",
+		icon: DsgNavIconRichiestaFascicoli,
+	},
+	{ href: "/listino", label: "Listino prodotti", icon: DsgNavIconListino },
 ] as const;
 
 /** Elenco documenti — pagine separate come nel portale legacy. */
 const navDocumenti = [
-	{ href: "/fascicoli", label: "Fascicoli Notarili", icon: FolderOpen },
-	{ href: "/successioni", label: "Successioni", icon: Users },
+	{ href: "/fascicoli", label: "Fascicoli Notarili", icon: DsgNavIconFascicoli },
+	{ href: "/successioni", label: "Successioni", icon: DsgNavIconSuccessioni },
 ] as const;
 
 const navFooter = [
@@ -45,7 +53,7 @@ function NavLink({
 }: {
 	href: ComponentProps<typeof Link>["href"];
 	label: string;
-	icon: React.ComponentType<{ strokeWidth?: number; className?: string }>;
+	icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
 	active: boolean;
 	collapsed: boolean;
 }) {

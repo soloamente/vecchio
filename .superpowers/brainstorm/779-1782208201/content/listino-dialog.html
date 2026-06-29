@@ -1,0 +1,164 @@
+<h2>Dialog prima visita</h2>
+<p class="subtitle">Mostrato al primo accesso al portale. Chiusura o CTA → flag in localStorage, non si ripete mai.</p>
+
+<style>
+  .dialog-scene {
+    position: relative;
+    background: #f3f5f8;
+    border-radius: 12px;
+    min-height: 320px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+  .dialog-scene .bg-shell {
+    display: flex;
+    min-height: 320px;
+    opacity: 0.45;
+    filter: blur(1px);
+    pointer-events: none;
+  }
+  .dialog-scene .bg-side { width: 64px; background: #1a4a8c; }
+  .dialog-scene .bg-main { flex: 1; padding: 20px; }
+  .dialog-scene .bg-h1 { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+  .dialog-scene .bg-lead { font-size: 12px; color: #6b7280; }
+  .dialog-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .dialog-box {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+  }
+  .dialog-box .hero {
+    background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+    padding: 20px;
+    text-align: center;
+  }
+  .dialog-box .hero-icon {
+    width: 48px; height: 48px;
+    margin: 0 auto 10px;
+    background: #fff;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: 24px;
+    box-shadow: 0 2px 8px rgba(37,99,235,.15);
+  }
+  .dialog-box .body { padding: 20px; }
+  .dialog-box h3 { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 6px; text-align: center; }
+  .dialog-box p { font-size: 13px; color: #6b7280; line-height: 1.5; text-align: center; margin-bottom: 16px; }
+  .dialog-box .preview-row {
+    display: flex; gap: 8px; justify-content: center; margin-bottom: 16px;
+  }
+  .dialog-box .mini-prod {
+    flex: 1; max-width: 110px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    background: #f9fafb;
+  }
+  .dialog-box .mini-prod .img {
+    height: 36px; border-radius: 6px;
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    margin-bottom: 4px;
+    display: grid; place-items: center;
+    font-size: 16px;
+  }
+  .dialog-box .mini-prod strong { display: block; font-size: 10px; color: #111827; }
+  .dialog-box .mini-prod span { font-size: 9px; color: #2563eb; font-weight: 600; }
+  .dialog-box .actions { display: flex; flex-direction: column; gap: 8px; }
+  .dialog-box .btn-primary {
+    height: 40px; border: none; border-radius: 10px;
+    background: #2563eb; color: #fff;
+    font-size: 14px; font-weight: 500;
+  }
+  .dialog-box .btn-ghost {
+    height: 36px; border: none; background: transparent;
+    color: #6b7280; font-size: 13px;
+  }
+  .dialog-box .close-x {
+    position: absolute; top: 12px; right: 12px;
+    width: 28px; height: 28px; border-radius: 8px;
+    border: 1px solid #e5e7eb; background: #fff;
+    color: #6b7280; font-size: 14px;
+  }
+  .dialog-wrap { position: relative; }
+</style>
+
+<div class="section">
+  <div class="dialog-scene">
+    <div class="bg-shell">
+      <div class="bg-side"></div>
+      <div class="bg-main">
+        <div class="bg-h1">Benvenuto, Notaio Dimostrativo</div>
+        <div class="bg-lead">Dashboard (sfocata dietro il dialog)</div>
+      </div>
+    </div>
+    <div class="dialog-overlay">
+      <div class="dialog-wrap">
+        <button class="close-x" type="button" aria-label="Chiudi">✕</button>
+        <div class="dialog-box">
+          <div class="hero">
+            <div class="hero-icon">📦</div>
+          </div>
+          <div class="body">
+            <h3>Scopri il nuovo listino prodotti</h3>
+            <p>
+              Servizi e prodotti DSG per il tuo studio notarile — prezzi aggiornati,
+              codici prodotto e descrizioni sempre a portata di mano.
+            </p>
+            <div class="preview-row">
+              <div class="mini-prod">
+                <div class="img">📄</div>
+                <strong>Copia conforme</strong>
+                <span>€ 45,00</span>
+              </div>
+              <div class="mini-prod">
+                <div class="img">🔐</div>
+                <strong>Conservazione</strong>
+                <span>€ 120,00</span>
+              </div>
+              <div class="mini-prod">
+                <div class="img">📋</div>
+                <strong>Visura</strong>
+                <span>€ 18,50</span>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-primary" type="button">Vai al listino</button>
+              <button class="btn-ghost" type="button">Chiudi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top: 1.5rem;">
+  <div class="option" data-choice="dialog-ok" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Va bene questo dialog</h3>
+      <p>Overlay su dashboard, anteprima 3 prodotti, CTA primaria → /listino, chiudi/X → dismiss permanente.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="dialog-minimal" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Preferisco più minimale</h3>
+      <p>Solo titolo, breve testo e un pulsante — senza anteprima prodotti.</p>
+    </div>
+  </div>
+</div>

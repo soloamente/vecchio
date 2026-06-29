@@ -1,16 +1,12 @@
-import { Button, buttonVariants } from "@vecchio/ui/components/button";
+import { Button } from "@vecchio/ui/components/button";
 import { Input } from "@vecchio/ui/components/input";
 import { Label } from "@vecchio/ui/components/label";
-import { cn } from "@vecchio/ui/lib/utils";
-import { ArrowLeft, ScrollText } from "lucide-react";
+import { ScrollText } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
 	DsgCard,
 	DsgPanelHeader,
-	dsgBtnOutline,
 	dsgBtnPrimary,
-	dsgEyebrow,
 	dsgH1,
 	dsgInput,
 	dsgLabel,
@@ -30,25 +26,12 @@ export const metadata: Metadata = {
 export default function RichiestaFascicoliPage() {
 	return (
 		<main className={dsgPageMain}>
-			<div className="space-y-4">
-				<Link
-					href="/fascicoli"
-					className={cn(
-						buttonVariants({ variant: "ghost", size: "sm" }),
-						"-ml-2 inline-flex items-center gap-2 text-[var(--dsg-text-muted)] hover:text-[var(--dsg-text)]",
-					)}
-				>
-					<ArrowLeft strokeWidth={1.75} className="size-4" />
-					Torna ai fascicoli
-				</Link>
-				<div className="space-y-1">
-					<p className={dsgEyebrow}>Pratiche</p>
-					<h1 className={dsgH1}>Richiesta fascicoli</h1>
-					<p className={dsgLead}>
-						Compila i campi per aprire una pratica verso la conservazione digitale. In
-						questa demo i dati non vengono inviati.
-					</p>
-				</div>
+			<div className="space-y-1">
+				<h1 className={dsgH1}>Richiesta fascicoli</h1>
+				<p className={dsgLead}>
+					Compila i campi per aprire una pratica verso la conservazione digitale. In
+					questa demo i dati non vengono inviati.
+				</p>
 			</div>
 
 			<DsgCard className="mt-8">

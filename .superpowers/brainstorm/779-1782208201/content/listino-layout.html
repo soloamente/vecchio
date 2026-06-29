@@ -1,0 +1,181 @@
+<h2>Layout del listino prodotti</h2>
+<p class="subtitle">Quale presentazione si adatta meglio al portale DSG? Clicca un'opzione per selezionarla.</p>
+
+<style>
+  .dsg-mini {
+    font-family: system-ui, sans-serif;
+    background: #f3f5f8;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    font-size: 11px;
+    color: #111827;
+  }
+  .dsg-mini .shell { display: flex; min-height: 220px; }
+  .dsg-mini .side {
+    width: 52px;
+    background: #1a4a8c;
+    flex-shrink: 0;
+  }
+  .dsg-mini .main { flex: 1; padding: 12px; }
+  .dsg-mini .title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  .dsg-mini .lead { color: #6b7280; font-size: 10px; margin-bottom: 10px; }
+  .dsg-mini .card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  }
+  .dsg-mini table { width: 100%; border-collapse: collapse; }
+  .dsg-mini th {
+    background: #f9fafb;
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .dsg-mini td {
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+  }
+  .dsg-mini .thumb {
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    display: grid; place-items: center;
+    font-size: 14px;
+  }
+  .dsg-mini .code { font-family: monospace; font-weight: 600; font-size: 10px; }
+  .dsg-mini .price { font-weight: 600; color: #2563eb; white-space: nowrap; }
+  .dsg-mini .desc { color: #6b7280; font-size: 9px; max-width: 120px; }
+  .dsg-mini .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+  }
+  .dsg-mini .pcard {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+    background: #fff;
+  }
+  .dsg-mini .pcard .thumb { width: 100%; height: 48px; margin-bottom: 6px; }
+  .dsg-mini .pcard h4 { font-size: 10px; font-weight: 600; margin-bottom: 2px; }
+  .dsg-mini .tag {
+    display: inline-block;
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    margin-bottom: 4px;
+  }
+</style>
+
+<div class="cards">
+  <div class="card" data-choice="tabella" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dsg-mini">
+        <div class="shell">
+          <div class="side"></div>
+          <div class="main">
+            <div class="title">Listino prodotti</div>
+            <div class="lead">Servizi e prodotti DSG per il notaio</div>
+            <div class="card">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Codice</th>
+                    <th>Prodotto</th>
+                    <th>Descrizione</th>
+                    <th>Prezzo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div class="thumb">📄</div></td>
+                    <td class="code">DSG-001</td>
+                    <td>Copia conforme</td>
+                    <td class="desc">Estratto autentico con marca da bollo</td>
+                    <td class="price">€ 45,00</td>
+                  </tr>
+                  <tr>
+                    <td><div class="thumb">🔐</div></td>
+                    <td class="code">DSG-014</td>
+                    <td>Conservazione digitale</td>
+                    <td class="desc">Archiviazione atti in cloud certificato</td>
+                    <td class="price">€ 120,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Tabella (come Fascicoli)</h3>
+      <p>Denso, scannable, coerente con le altre liste del portale. Ideale con molti prodotti.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="griglia" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dsg-mini">
+        <div class="shell">
+          <div class="side"></div>
+          <div class="main">
+            <div class="title">Listino prodotti</div>
+            <div class="lead">Servizi e prodotti DSG per il notaio</div>
+            <div class="card">
+              <div class="grid">
+                <div class="pcard">
+                  <div class="thumb">📄</div>
+                  <span class="tag">DSG-001</span>
+                  <h4>Copia conforme</h4>
+                  <p class="desc">Estratto autentico con marca da bollo</p>
+                  <p class="price">€ 45,00</p>
+                </div>
+                <div class="pcard">
+                  <div class="thumb">🔐</div>
+                  <span class="tag">DSG-014</span>
+                  <h4>Conservazione digitale</h4>
+                  <p class="desc">Archiviazione atti in cloud certificato</p>
+                  <p class="price">€ 120,00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Griglia card</h3>
+      <p>Più promozionale, mette in evidenza immagine e descrizione. Meglio con pochi prodotti in evidenza.</p>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top: 1.5rem;">
+  <div class="pros">
+    <h4>Tabella — pro</h4>
+    <ul>
+      <li>Stesso pattern di Fascicoli / Successioni</li>
+      <li>Confronto prezzi rapido</li>
+    </ul>
+  </div>
+  <div class="cons">
+    <h4>Griglia — pro</h4>
+    <ul>
+      <li>Più adatta al dialog promozionale</li>
+      <li>Immagini più visibili</li>
+    </ul>
+  </div>
+</div>

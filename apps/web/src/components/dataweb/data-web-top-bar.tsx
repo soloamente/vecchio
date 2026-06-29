@@ -2,10 +2,24 @@
 
 import { Input } from "@vecchio/ui/components/input";
 import { Command, Search } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { useListinoSearchOptional } from "@/components/dataweb/listino-search-context";
 
-/** White header strip: global search only (profile and notifications live in the sidebar). */
+/** White header strip — global search; on `/listino` filters catalog products. */
 export function DataWebTopBar() {
+	const pathname = usePathname();
+	const listinoSearch = useListinoSearchOptional();
+	const isListinoPage =
+		pathname === "/listino" || pathname.startsWith("/listino/");
+
+	// Clear product query when leaving the listino page.
+	useEffect(() => {
+		if (!isListinoPage) {
+			listinoSearch?.setQuery("");
+		}
+	}, [isListinoPage, listinoSearch?.setQuery]);
+
 	useEffect(() => {
 		const focusSearch = (event: KeyboardEvent) => {
 			const key = event.key.toLowerCase();
@@ -30,7 +44,18 @@ export function DataWebTopBar() {
 					id="dsg-global-search"
 					type="search"
 					name="q"
-					placeholder="Cerca fascicolo, repertorio..."
+					placeholder={
+						isListinoPage
+							? "Cerca prodotto, codice, descrizione..."
+							: "Cerca fascicolo, repertorio..."
+					}
+					value={isListinoPage ? (listinoSearch?.query ?? "") : ""}
+					readOnly={!isListinoPage}
+					onChange={(event) => {
+						if (isListinoPage) {
+							listinoSearch?.setQuery(event.target.value);
+						}
+					}}
 					autoComplete="off"
 					spellCheck={false}
 					className="h-11 w-full rounded-[var(--dsg-radius-control)] border-[var(--dsg-border)] bg-[#f9fafb] pr-16 pl-11 text-[15px] shadow-none placeholder:text-[var(--dsg-text-muted)]"

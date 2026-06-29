@@ -1,0 +1,206 @@
+<h2>Listino con switch vista</h2>
+<p class="subtitle">Conferma il pattern: un filtro segmentato in alto a destra per passare tra tabella e griglia. La preferenza può restare in sessione (localStorage).</p>
+
+<style>
+  .dsg-mini {
+    font-family: system-ui, sans-serif;
+    background: #f3f5f8;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    font-size: 11px;
+    color: #111827;
+  }
+  .dsg-mini .shell { display: flex; min-height: 260px; }
+  .dsg-mini .side { width: 52px; background: #1a4a8c; flex-shrink: 0; }
+  .dsg-mini .main { flex: 1; padding: 12px; }
+  .dsg-mini .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .dsg-mini .title { font-weight: 600; font-size: 13px; }
+  .dsg-mini .lead { color: #6b7280; font-size: 10px; margin-top: 2px; }
+  .dsg-mini .seg {
+    display: inline-flex;
+    background: #e5e7eb;
+    border-radius: 8px;
+    padding: 2px;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+  .dsg-mini .seg button {
+    border: none;
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: default;
+  }
+  .dsg-mini .seg button.on {
+    background: #fff;
+    color: #111827;
+    box-shadow: 0 1px 2px rgba(15,23,42,.08);
+  }
+  .dsg-mini .card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .dsg-mini .card-h {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dsg-mini .card-h strong { font-size: 10px; }
+  .dsg-mini .card-h span { font-size: 9px; color: #6b7280; }
+  .dsg-mini table { width: 100%; border-collapse: collapse; }
+  .dsg-mini th {
+    background: #f9fafb;
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 8px;
+    text-transform: uppercase;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .dsg-mini td { padding: 8px; border-bottom: 1px solid #e5e7eb; vertical-align: middle; }
+  .dsg-mini .thumb {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    display: grid; place-items: center; font-size: 12px;
+  }
+  .dsg-mini .code { font-family: monospace; font-weight: 600; font-size: 10px; }
+  .dsg-mini .price { font-weight: 600; color: #2563eb; }
+  .dsg-mini .desc { color: #6b7280; font-size: 9px; }
+  .dsg-mini .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 8px; }
+  .dsg-mini .pcard { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px; }
+  .dsg-mini .pcard .thumb { width: 100%; height: 40px; margin-bottom: 6px; }
+  .dsg-mini .tag { font-size: 8px; padding: 2px 6px; border-radius: 999px; background: #dbeafe; color: #1d4ed8; }
+  .dsg-mini .pcard h4 { font-size: 10px; font-weight: 600; margin: 4px 0 2px; }
+  .dsg-mini .muted { color: #9ca3af; font-size: 9px; font-style: italic; padding: 24px; text-align: center; }
+</style>
+
+<div class="section">
+  <h3>Posizione del toggle</h3>
+  <p class="subtitle">Allineato alla toolbar della pagina, accanto al titolo (come i tab grafici in dashboard).</p>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Vista Tabella (default)</div>
+    <div class="mockup-body">
+      <div class="dsg-mini">
+        <div class="shell">
+          <div class="side"></div>
+          <div class="main">
+            <div class="header-row">
+              <div>
+                <div class="title">Listino prodotti</div>
+                <div class="lead">Servizi e prodotti DSG</div>
+              </div>
+              <div class="seg" aria-label="Vista">
+                <button class="on">Tabella</button>
+                <button>Griglia</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-h">
+                <strong>Catalogo</strong>
+                <span>12 prodotti</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th></th><th>Codice</th><th>Prodotto</th><th>Prezzo</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div class="thumb">📄</div></td>
+                    <td class="code">DSG-001</td>
+                    <td>Copia conforme <div class="desc">Estratto autentico</div></td>
+                    <td class="price">€ 45,00</td>
+                  </tr>
+                  <tr>
+                    <td><div class="thumb">🔐</div></td>
+                    <td class="code">DSG-014</td>
+                    <td>Conservazione digitale <div class="desc">Cloud certificato</div></td>
+                    <td class="price">€ 120,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">Vista Griglia (dopo click)</div>
+    <div class="mockup-body">
+      <div class="dsg-mini">
+        <div class="shell">
+          <div class="side"></div>
+          <div class="main">
+            <div class="header-row">
+              <div>
+                <div class="title">Listino prodotti</div>
+                <div class="lead">Servizi e prodotti DSG</div>
+              </div>
+              <div class="seg">
+                <button>Tabella</button>
+                <button class="on">Griglia</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-h">
+                <strong>Catalogo</strong>
+                <span>12 prodotti</span>
+              </div>
+              <div class="grid">
+                <div class="pcard">
+                  <div class="thumb">📄</div>
+                  <span class="tag">DSG-001</span>
+                  <h4>Copia conforme</h4>
+                  <p class="desc">Estratto autentico</p>
+                  <p class="price">€ 45,00</p>
+                </div>
+                <div class="pcard">
+                  <div class="thumb">🔐</div>
+                  <span class="tag">DSG-014</span>
+                  <h4>Conservazione digitale</h4>
+                  <p class="desc">Cloud certificato</p>
+                  <p class="price">€ 120,00</p>
+                </div>
+                <div class="pcard">
+                  <div class="thumb">📋</div>
+                  <span class="tag">DSG-022</span>
+                  <h4>Visura catastale</h4>
+                  <p class="desc">Richiesta telematica</p>
+                  <p class="price">€ 18,50</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top: 1.5rem;">
+  <div class="option" data-choice="conferma" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Confermo questo pattern</h3>
+      <p>Toggle segmentato Tabella / Griglia in header pagina, stesso stile dei controlli dashboard. Preferenza salvata in localStorage.</p>
+    </div>
+  </div>
+</div>

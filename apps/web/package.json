@@ -17,6 +17,7 @@
     "@vecchio/ui": "workspace:*",
     "babel-plugin-react-compiler": "^1.0.0",
     "dotenv": "catalog:",
+    "framer-motion": "^12.40.0",
     "lucide-react": "catalog:",
     "next": "catalog:",
     "next-themes": "catalog:",

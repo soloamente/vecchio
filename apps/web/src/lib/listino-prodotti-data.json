@@ -1,0 +1,422 @@
+[
+  {
+    "codice": "52656651",
+    "nome": "BLOCCO 3M POST-IT 76X76 CANARY 654 CF.12",
+    "descrizione": "3M · CONFEZIONE · CF. 12 PEZZI",
+    "prezzo": 16.5,
+    "immaginePath": "/listino/52656651.png"
+  },
+  {
+    "codice": "02347200",
+    "nome": "BLOCCO ADESIVO IN LINEA 76X76",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.42,
+    "immaginePath": "/listino/02347200.png"
+  },
+  {
+    "codice": "85297032",
+    "nome": "BLOCCO 3M POST-IT 76X127 CANARY CF.12 655-6",
+    "descrizione": "3M · CONFEZIONE · CF. 12 PEZZI",
+    "prezzo": 19.88,
+    "immaginePath": "/listino/85297032.png"
+  },
+  {
+    "codice": "02347300",
+    "nome": "BLOCCO ADESIVO IN LINEA 76X127",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.53,
+    "immaginePath": "/listino/02347300.png"
+  },
+  {
+    "codice": "01959600",
+    "nome": "BLOCCO IN UFFICIO RED 21X29 MM5 FF70",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 1.1,
+    "immaginePath": "/listino/01959600.png"
+  },
+  {
+    "codice": "11683600",
+    "nome": "BUSTA IN LINEA FORATURA UNIVERSALE 22X30 GOFFRATA MEDIO SPESSORE CF.50",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 1.9,
+    "immaginePath": "/listino/11683600.png"
+  },
+  {
+    "codice": "02357600",
+    "nome": "BUSTA FORATURA UNIVERSALE 22X30 POLIPROPILENE 09 GOFFRATA CF.50",
+    "descrizione": "SEI ROTA · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 3.3,
+    "immaginePath": "/listino/02357600.png"
+  },
+  {
+    "codice": "02767100",
+    "nome": "COLLA STICK IN LINEA G20",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.6,
+    "immaginePath": "/listino/02767100.png"
+  },
+  {
+    "codice": "00232200",
+    "nome": "COLLA STICK PRITT MEDIA GR22",
+    "descrizione": "PRITT · PEZZO · SINGOLO",
+    "prezzo": 1.79,
+    "immaginePath": "/listino/00232200.png"
+  },
+  {
+    "codice": "01887300",
+    "nome": "CORRETTORE PRITT ROLLER COMPACT FLEX MM.4,2X10MT",
+    "descrizione": "PRITT · PEZZO · SINGOLO",
+    "prezzo": 2.66,
+    "immaginePath": "/listino/01887300.png"
+  },
+  {
+    "codice": "00660501",
+    "nome": "CORRETTORE IN LINEA ROLLER MM.5X8MT",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 1.25,
+    "immaginePath": "/listino/00660501.png"
+  },
+  {
+    "codice": "01385600",
+    "nome": "CUCITRICE ZENITH 590",
+    "descrizione": "ZENITH · PEZZO · SINGOLO",
+    "prezzo": 24.19,
+    "immaginePath": "/listino/01385600.png"
+  },
+  {
+    "codice": "00033100",
+    "nome": "CUCITRICE ZENITH 548/E",
+    "descrizione": "ZENITH · PEZZO · SINGOLO",
+    "prezzo": 27.77,
+    "immaginePath": "/listino/00033100.png"
+  },
+  {
+    "codice": "04897600",
+    "nome": "CUCITRICE IN-LINEA",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 3.1,
+    "immaginePath": "/listino/04897600.png"
+  },
+  {
+    "codice": "00033900",
+    "nome": "PUNTI CUCITRICE ZENITH 130E CF.10 DA 1000",
+    "descrizione": "ZENITH · CONFEZIONE · CF. 10 PEZZI",
+    "prezzo": 12.35,
+    "immaginePath": "/listino/00033900.png"
+  },
+  {
+    "codice": "06073000",
+    "nome": "PUNTI CUCITRICE IN-LINEA 6/4 CF 10.000",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 10.000 PEZZI",
+    "prezzo": 2.8,
+    "immaginePath": "/listino/06073000.png"
+  },
+  {
+    "codice": "00033300",
+    "nome": "LEVAPUNTI ZENITH 580",
+    "descrizione": "ZENITH · PEZZO · SINGOLO",
+    "prezzo": 8.27,
+    "immaginePath": "/listino/00033300.png"
+  },
+  {
+    "codice": "11577600",
+    "nome": "LEVAPUNTI IN LINEA LUX",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 1.8,
+    "immaginePath": "/listino/11577600.png"
+  },
+  {
+    "codice": "60620126",
+    "nome": "EVIDENZIATORE TRATTOVIDEO GIALLO",
+    "descrizione": "TRATTO · PEZZO · SINGOLO",
+    "prezzo": 0.68,
+    "immaginePath": "/listino/60620126.png"
+  },
+  {
+    "codice": "03278405",
+    "nome": "EVIDENZIATORE IN-LINEA GIALLO CF.10",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 10 PEZZI",
+    "prezzo": 3.34,
+    "immaginePath": "/listino/03278405.png"
+  },
+  {
+    "codice": "01640800",
+    "nome": "GOMMA STAEDTLER MARS PLASTIC",
+    "descrizione": "STAEDTLER · PEZZO · SINGOLO",
+    "prezzo": 0.85,
+    "immaginePath": "/listino/01640800.png"
+  },
+  {
+    "codice": "10449500",
+    "nome": "GOMMA MATITA IN LINEA PLAST. BIANCA",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.4,
+    "immaginePath": "/listino/10449500.png"
+  },
+  {
+    "codice": "10623910",
+    "nome": "MATITA STAEDTLER NORIS N.2-HB",
+    "descrizione": "STAEDTLER · PEZZO · SINGOLO",
+    "prezzo": 0.68,
+    "immaginePath": "/listino/10623910.png"
+  },
+  {
+    "codice": "75795295",
+    "nome": "MATITA IN LINEA HB CF.12",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 12 PEZZI",
+    "prezzo": 1.7,
+    "immaginePath": "/listino/75795295.png"
+  },
+  {
+    "codice": "00005001",
+    "nome": "PENNA SFERA BIC CRISTAL NERO CF.50",
+    "descrizione": "BIC · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 12.6,
+    "immaginePath": "/listino/00005001.png"
+  },
+  {
+    "codice": "03278501",
+    "nome": "PENNA SFERA IN LINEA NERO CF.50",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 4.9,
+    "immaginePath": "/listino/03278501.png"
+  },
+  {
+    "codice": "91896618",
+    "nome": "PILA EVEREADY STILO 1,5V LR6 AA ALCALINA BLISTER PZ.4 ENERGIZER",
+    "descrizione": "PANASONIC · CONFEZIONE · CF. 4 PEZZI",
+    "prezzo": 1.53,
+    "immaginePath": "/listino/91896618.png"
+  },
+  {
+    "codice": "91896617",
+    "nome": "PILA EVEREADY M/STILO 1,5V LR3 AAA ALCALINA BLISTER PZ.4 ENERGIZER",
+    "descrizione": "PANASONIC · CONFEZIONE · CF. 4 PEZZI",
+    "prezzo": 1.53,
+    "immaginePath": "/listino/91896617.png"
+  },
+  {
+    "codice": "03192803",
+    "nome": "REGISTRATORE INSIDE H 35X28X8 BLU",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 2.75,
+    "immaginePath": null
+  },
+  {
+    "codice": "00333400",
+    "nome": "FALDONE CON LACCIO IN LINEA DORSO 15",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.89,
+    "immaginePath": "/listino/00333400.png"
+  },
+  {
+    "codice": "00333300",
+    "nome": "FALDONE CON LACCIO IN LINEA DORSO 12",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.89,
+    "immaginePath": "/listino/00333300.png"
+  },
+  {
+    "codice": "00074600",
+    "nome": "FALDONE CON LACCIO IN LINEA DORSO 10",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.89,
+    "immaginePath": "/listino/00074600.png"
+  },
+  {
+    "codice": "09757129",
+    "nome": "STROF.SANDI 800 STRAPPI CF.2 PURA CELLULOSA",
+    "descrizione": "REAL CARTA · CONFEZIONE · CF. 2 PEZZI",
+    "prezzo": 8.9,
+    "immaginePath": "/listino/09757129.png"
+  },
+  {
+    "codice": "10072200",
+    "nome": "CARTA IGIENICA STRONG 2 VELI CF.10 ROTOLI LUCART",
+    "descrizione": "LUCART · CONFEZIONE · CF. 10 PEZZI",
+    "prezzo": 3.35,
+    "immaginePath": "/listino/10072200.png"
+  },
+  {
+    "codice": "21054203",
+    "nome": "CARTA IGIENICA PIUMA CF.4 2 VELI GR.750",
+    "descrizione": "SANICART · CONFEZIONE · CF. 2 PEZZI",
+    "prezzo": 2.6,
+    "immaginePath": "/listino/21054203.png"
+  },
+  {
+    "codice": "05394900",
+    "nome": "RISMA NAVIGATOR G80 A4 FF500 UNIVERSAL",
+    "descrizione": "NAVIGATOR · PEZZO · SINGOLO",
+    "prezzo": 4.15,
+    "immaginePath": "/listino/05394900.png"
+  },
+  {
+    "codice": "05872000",
+    "nome": "RISMA DISCOVERY G75 A4 FF500",
+    "descrizione": "DISCOVERY · PEZZO · SINGOLO",
+    "prezzo": 3.29,
+    "immaginePath": "/listino/05872000.png"
+  },
+  {
+    "codice": "20584000",
+    "nome": "RISMA A3 FF500 REPORT G80",
+    "descrizione": "ND · PEZZO · SINGOLO",
+    "prezzo": 6.65,
+    "immaginePath": "/listino/20584000.png"
+  },
+  {
+    "codice": "93350917",
+    "nome": "ASCIUGAMANI CARTA PIEGATI C 1 VELO ECO CF.3840 (20X192)",
+    "descrizione": "LUCART · CONFEZIONE · CF. 3.840 PEZZI",
+    "prezzo": 42.97,
+    "immaginePath": "/listino/93350917.png"
+  },
+  {
+    "codice": "81782516",
+    "nome": "SAPONE LIQUIDO MANI MATRIX 5LT",
+    "descrizione": "ND · PEZZO · SINGOLO",
+    "prezzo": 8.8,
+    "immaginePath": "/listino/81782516.png"
+  },
+  {
+    "codice": "00495003",
+    "nome": "CARTELLA MANILLA 3 LEMBI 25X33 SENZA STAMPA AZZURRO CF.25",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 25 PEZZI",
+    "prezzo": 3.7,
+    "immaginePath": "/listino/00495003.png"
+  },
+  {
+    "codice": "34814803",
+    "nome": "CARTELLA IN LINEA APERTURA LATERALE 22X30 GOFFRATA MEDIO SPESSORE CF.50",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 2.52,
+    "immaginePath": "/listino/34814803.png"
+  },
+  {
+    "codice": "70407712",
+    "nome": "NASTRO ADESIVO IN LINEA POLIPROPILENE TRASPARENTE 19X33",
+    "descrizione": "IN LINEA · PEZZO · SINGOLO",
+    "prezzo": 0.24,
+    "immaginePath": "/listino/70407712.png"
+  },
+  {
+    "codice": "00301100",
+    "nome": "NASTRO ADESIVO 3M TRASPARENTE MAGIC 810 19X33 810-19X33",
+    "descrizione": "3M · PEZZO · SINGOLO",
+    "prezzo": 3.25,
+    "immaginePath": "/listino/00301100.png"
+  },
+  {
+    "codice": "01329302",
+    "nome": "SEGNAPAGINA INDEX RIMOVIBILE CF.50 25X43 ROSSO 680-1",
+    "descrizione": "3M · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 2.95,
+    "immaginePath": "/listino/01329302.png"
+  },
+  {
+    "codice": "59180308",
+    "nome": "SEGNAPAGINA INDEX IN LINEA 45X12MM CF140",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 140 PEZZI",
+    "prezzo": 2.24,
+    "immaginePath": "/listino/59180308.png"
+  },
+  {
+    "codice": "61681139",
+    "nome": "SEDIA OPERATIVA GIUSTA T400 SY NERO CON SCHIENALE IN RETE E BRACCIOLI",
+    "descrizione": "ITALIANSEDIOLITI · PEZZO · SINGOLO",
+    "prezzo": 197.0,
+    "immaginePath": "/listino/61681139.png"
+  },
+  {
+    "codice": "56595539",
+    "nome": "SEDIA ERGONOMIGA RIGHT USO H24 NERO CON SUPPORTO LOMBARE E BRACCIOLI 3D",
+    "descrizione": "ITALIANSEDIOLITI · PEZZO · SINGOLO",
+    "prezzo": 165.0,
+    "immaginePath": "/listino/56595539.png"
+  },
+  {
+    "codice": "90134130",
+    "nome": "LAMPADA DA TAVOLO ALBA ARCHITECT NERA",
+    "descrizione": "ALBA · PEZZO · SINGOLO",
+    "prezzo": 48.86,
+    "immaginePath": "/listino/90134130.png"
+  },
+  {
+    "codice": "02605501",
+    "nome": "CESTINO FELLOWES GETTACARTA CHIUSO NERO",
+    "descrizione": "FELLOWES · PEZZO · SINGOLO",
+    "prezzo": 4.73,
+    "immaginePath": "/listino/02605501.png"
+  },
+  {
+    "codice": "29806203",
+    "nome": "DETERGENTE SANIALC MULTISUPERICI 750ML HCCP",
+    "descrizione": "SANITEC · PEZZO · SINGOLO",
+    "prezzo": 3.2,
+    "immaginePath": "/listino/29806203.png"
+  },
+  {
+    "codice": "61739354",
+    "nome": "DETERGENTE DISINFETTANTE SUPERIFICI 750 ML PRESIDIO MEDICO CHIRURGICO",
+    "descrizione": "SANITEC · PEZZO · SINGOLO",
+    "prezzo": 3.69,
+    "immaginePath": "/listino/61739354.png"
+  },
+  {
+    "codice": "81239461",
+    "nome": "DEODORANTE SPRAY PUSH & FRESH 300ML FIORI",
+    "descrizione": "ND · PEZZO · SINGOLO",
+    "prezzo": 2.6,
+    "immaginePath": "/listino/81239461.png"
+  },
+  {
+    "codice": "67118640",
+    "nome": "TOVAGLIOLI 2 VELI 33X33 OK CF.50 BIANCO",
+    "descrizione": "ND · CONFEZIONE · CF. 50 PEZZI",
+    "prezzo": 1.2,
+    "immaginePath": "/listino/67118640.png"
+  },
+  {
+    "codice": "10584001",
+    "nome": "RISMA A4 FF500 ECLIPSE",
+    "descrizione": "ND · PEZZO · SINGOLO",
+    "prezzo": 2.68,
+    "immaginePath": "/listino/10584001.png"
+  },
+  {
+    "codice": "04097700",
+    "nome": "RISMA LASER CLAIREFONTAINE DCP A3 G120 FF250",
+    "descrizione": "CLAIREFONTAINE · PEZZO · SINGOLO",
+    "prezzo": 10.7,
+    "immaginePath": "/listino/04097700.jpg"
+  },
+  {
+    "codice": "32585370",
+    "nome": "CARTELLA BRISTOL 3 LEMBI 25X34,5 SENZA STAMPA GR.270 ROSSO CF.25",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 25 PEZZI",
+    "prezzo": 8.75,
+    "immaginePath": "/listino/32585370.jpg"
+  },
+  {
+    "codice": "05949396",
+    "nome": "CARTELLA BRISTOL 3 LEMBI 25X34,5 SENZA STAMPA GR.270 GIALLO CF.25",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 25 PEZZI",
+    "prezzo": 8.75,
+    "immaginePath": "/listino/05949396.jpg"
+  },
+  {
+    "codice": "64736848",
+    "nome": "CARTELLA BRISTOL 3 LEMBI 25X34,5 SENZA STAMPA GR.270 ARANCIO CF.25",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 25 PEZZI",
+    "prezzo": 8.75,
+    "immaginePath": "/listino/64736848.jpg"
+  },
+  {
+    "codice": "00731261",
+    "nome": "CARTELLA BRISTOL 3 LEMBI 25X34,5 SENZA STAMPA CICLAMINO GR.200 CF.25",
+    "descrizione": "IN LINEA · CONFEZIONE · CF. 25 PEZZI",
+    "prezzo": 8.75,
+    "immaginePath": "/listino/00731261.jpg"
+  }
+]
